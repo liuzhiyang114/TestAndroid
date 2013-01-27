@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<com.baidu.mapapi.MapView android:id="@+id/bmapsView"
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"
+		android:clickable="true" />
+<LinearLayout android:orientation="horizontal"
+
+     android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="@drawable/orange">
+    <Spinner
+        android:id="@+id/mySpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+    />
+    <Button
+		    android:id="@+id/button1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="锁定关" />
+
+		<TextView 
+		    android:id="@+id/TextView01"
+			android:textColor="#222222"
+			android:layout_width="wrap_content" 
+			android:layout_height="40dip"
+			android:layout_marginLeft="5dip"
+			android:textSize="18dip"
+			android:gravity="left"/>
+
+		<Button
+		    android:id="@+id/button2"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="显示卡号信息" />
+</LinearLayout>
+	
+</FrameLayout>

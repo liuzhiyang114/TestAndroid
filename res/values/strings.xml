@@ -1,0 +1,18 @@
+<resources>
+
+    <string name="app_name">ParkAssistant</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="_app_title">停车小助手</string>
+    <string name="relog">剩余车位：</string>
+    <string name="alllog">总车位：</string>
+    <string name="exitlog">返回</string>
+    <string name="namelog">停车场名：</string>
+    <string-array name="planets">
+        <item>搜索1公里</item>
+        <item>搜索2公里</item>
+        <item>搜索3公里</item>
+    </string-array>
+
+</resources>
