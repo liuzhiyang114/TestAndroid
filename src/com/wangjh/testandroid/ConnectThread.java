@@ -67,7 +67,7 @@ public class ConnectThread extends Thread {
 				+ String.valueOf(userLongitude)
 				+ "\',\'rad\':\'" + radius + "\'}"+"</CFX>";
 		// 2.启动socket连接，此IP地址需要更换成域名
-		clientSocket cs = new clientSocket("183.93.75.33", 2010);
+		clientSocket cs = new clientSocket("liuzhiyang114.oicp.net", 2010);
 
 		// 发送请求数据
 		if (cs.Send(sendmsg)) {
