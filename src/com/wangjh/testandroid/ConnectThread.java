@@ -66,8 +66,8 @@ public class ConnectThread extends Thread {
 				+ "\',\'myGPSlon\':\'"
 				+ String.valueOf(userLongitude)
 				+ "\',\'rad\':\'" + radius + "\'}"+"</CFX>";
-		// 2.启动socket连接
-		clientSocket cs = new clientSocket("192.168.0.2", 2010);
+		// 2.启动socket连接，此IP地址需要更换成域名
+		clientSocket cs = new clientSocket("183.93.75.33", 2010);
 
 		// 发送请求数据
 		if (cs.Send(sendmsg)) {
