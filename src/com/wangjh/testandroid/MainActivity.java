@@ -10,14 +10,19 @@ import com.baidu.mapapi.MapView;
 import com.baidu.mapapi.MyLocationOverlay;
 
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -72,7 +77,7 @@ public class MainActivity extends MapActivity {
         
         btn1=(Button)findViewById(R.id.button1);
         btn2=(Button)findViewById(R.id.button2);
-
+        checkGPS();
         myhandle=new MyHandle();
         
         btn1.setText("定位");
@@ -192,6 +197,51 @@ public class MainActivity extends MapActivity {
     	
     	return true;
     }
+    
+    //判断GPS
+    private void checkGPS() {
+		boolean result=true;
+		LocationManager lmanager=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
+		if(!lmanager.isProviderEnabled(LocationManager.GPS_PROVIDER))
+		{
+			Toast.makeText(getApplicationContext(), "GPS未开启",
+				     Toast.LENGTH_SHORT).show();
+			
+			result=false;
+		}
+		else
+		{
+			Toast.makeText(getApplicationContext(), "GPS已开启",
+				     Toast.LENGTH_SHORT).show();
+		}
+	}
+    
+    
+    //退出
+    private void showTips(){
+    	AlertDialog alertDialog = new AlertDialog.Builder(this)
+    	.setTitle("退出程序")
+    	.setMessage("是否退出停车小助手？")
+    	.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+    	public void onClick(DialogInterface dialog, int which){
+    	finish();
+    	}
+    	}).setNegativeButton("取消",
+    	new DialogInterface.OnClickListener() {
+    	public void onClick(DialogInterface dialog, int which){
+    	return;
+    	}}).create(); //创建对话框
+    	alertDialog.show(); // 显示对话框
+    	}
+//退出
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(keyCode==KeyEvent.KEYCODE_BACK && event.getRepeatCount()==0){
+			this.showTips();
+			return false;
+			}
+			return false;
+	}
 
 	@Override
 	protected boolean isRouteDisplayed() {
@@ -303,10 +353,7 @@ public class MainActivity extends MapActivity {
 					
 			}
 			super.handleMessage(msg);
-		}
-		
-		
-		
+		}	
 	}
 }
 
