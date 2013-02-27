@@ -11,12 +11,14 @@ import com.baidu.mapapi.MyLocationOverlay;
 
 
 import android.app.AlertDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -78,6 +80,7 @@ public class MainActivity extends MapActivity {
         btn1=(Button)findViewById(R.id.button1);
         btn2=(Button)findViewById(R.id.button2);
         checkGPS();
+        checkNET();
         myhandle=new MyHandle();
         
         btn1.setText("定位");
@@ -204,19 +207,69 @@ public class MainActivity extends MapActivity {
 		LocationManager lmanager=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
 		if(!lmanager.isProviderEnabled(LocationManager.GPS_PROVIDER))
 		{
-			Toast.makeText(getApplicationContext(), "GPS未开启",
-				     Toast.LENGTH_SHORT).show();
-			
+//			Toast.makeText(getApplicationContext(), "GPS未开启",
+//				     Toast.LENGTH_SHORT).show();
+			AlertDialog alertDialogGPS = new AlertDialog.Builder(this)
+			.setIcon(android.R.drawable.ic_dialog_alert)
+	    	.setTitle("GPS定位")
+	    	.setMessage("您的GPS未开启，是否设置？")
+	    	.setPositiveButton("设置", new DialogInterface.OnClickListener() {
+	    	public void onClick(DialogInterface dialog, int which){
+	    	Intent intent= new Intent(
+	    			android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS
+	    			);
+	    	startActivityForResult(intent, 0);
+	    	}
+	    	}).setNegativeButton("取消",
+	    	new DialogInterface.OnClickListener() {
+	    	public void onClick(DialogInterface dialog, int which){
+	    	return;
+	    	}}).create(); //创建对话框
+	    	alertDialogGPS.show(); // 显示对话框
 			result=false;
-		}
-		else
-		{
-			Toast.makeText(getApplicationContext(), "GPS已开启",
-				     Toast.LENGTH_SHORT).show();
 		}
 	}
     
     
+    //判断网络状态
+    private void checkNET() {
+    	boolean flag = false;
+        ConnectivityManager manager = (ConnectivityManager)getSystemService(
+                Context.CONNECTIVITY_SERVICE);
+        if(manager.getActiveNetworkInfo() != null)
+        {
+            flag = manager.getActiveNetworkInfo().isAvailable();
+        }
+        if(!flag)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setIcon(android.R.drawable.ic_dialog_alert);
+            builder.setTitle("网络状态");
+            builder.setMessage("当前网络不可用，是否设置网络？");
+            builder.setPositiveButton("设置", new DialogInterface.OnClickListener() {
+    	    	public void onClick(DialogInterface dialog, int which){
+    	    		Intent intent= new Intent(
+    		    			android.provider.Settings.ACTION_SETTINGS
+    		    			);
+    		    	startActivityForResult(intent, 0);
+    	    	}
+    	    	});
+    	    	builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+    	        builder.create();
+                builder.show();
+            }
+
+    	}
+            
+            
+             
+       
     //退出
     private void showTips(){
     	AlertDialog alertDialog = new AlertDialog.Builder(this)

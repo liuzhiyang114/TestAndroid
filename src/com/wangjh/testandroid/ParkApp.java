@@ -25,8 +25,8 @@ public class ParkApp extends Application{
 		@Override
 		public void onGetNetworkState(int iError) {
 			Log.d("MyGeneralListener", "onGetNetworkState error is "+ iError);
-			Toast.makeText(ParkApp.mParkApp.getApplicationContext(), "您的网络出错啦！",
-					Toast.LENGTH_LONG).show();
+//			Toast.makeText(ParkApp.mParkApp.getApplicationContext(), "您的网络出错啦！",
+//					Toast.LENGTH_LONG).show();
 		}
 
 		@Override
