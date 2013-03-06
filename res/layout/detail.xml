@@ -58,7 +58,7 @@
             android:textSize="23sp" />
 
         <TextView
-            android:id="@+id/residue"
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:enabled="false"

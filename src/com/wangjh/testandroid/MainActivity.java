@@ -94,7 +94,6 @@ public class MainActivity extends MapActivity {
 			                (int) (userLongitudeE6)));
 					mMapView.invalidate();
 				}else{
-					
 				}
 			}	
         });
@@ -109,7 +108,8 @@ public class MainActivity extends MapActivity {
 				connectThread.start();
 			}	
         });
-      
+        
+        
         ParkApp app = (ParkApp)this.getApplication();
 		if (app.mBMapMan == null) {
 			app.mBMapMan = new BMapManager(getApplication());
@@ -396,7 +396,7 @@ public class MainActivity extends MapActivity {
 			 		}
 			 		overitem = new OverItemT(marker, MainActivity.this, 1);
 			 		overitem.setMainActivity(MainActivity.this);
-			 		overitem.addGeoPoint(mLat1, mLon1,"万达广场","现空102车位，共500车位");
+			 		overitem.addGeoPoint(mLat1, mLon1,"Parkname","restamount，parkamount");
 			 		mMapView.getOverlays().add(overitem); //添加ItemizedOverlay实例到mMapView
 			 		//将目标地址移动到中心
 			 		mMapView.getController().animateTo(new GeoPoint((int) (mLat1 * 1E6), (int) (mLon1 * 1E6)));
