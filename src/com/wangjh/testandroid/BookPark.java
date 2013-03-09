@@ -15,6 +15,10 @@ public class BookPark extends MapActivity implements OnClickListener{
 	
 	Button BookPark;
 	Button back;
+	String parkname;
+	Intent intent;
+	Bundle bundl;
+	Boolean flagbook;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -24,6 +28,14 @@ public class BookPark extends MapActivity implements OnClickListener{
 		BookPark.setOnClickListener(this);
 		back=(Button)findViewById(R.id.btnback);
 		back.setOnClickListener(this);
+		//Bundle
+//		bundl=this.getIntent().getExtras();
+//		parkname=bundl.getString("parkname");
+		
+		intent=this.getIntent();
+		bundl=intent.getExtras();
+		flagbook=bundl.getBoolean("flag");
+		parkname=bundl.getString("parkname");
 	}
 	
 	
@@ -54,11 +66,12 @@ private void Bookpark(){
     	.setMessage("是否预定车位？")
     	.setPositiveButton("确定", new DialogInterface.OnClickListener() {
     	public void onClick(DialogInterface dialog, int which){
-    		Toast.makeText(getApplicationContext(), "您已预定成功!",
+    		Toast.makeText(getApplicationContext(), "您已成功预定"+parkname,
    			     Toast.LENGTH_SHORT).show();
-   		Bundle bundle=new Bundle();
-   		bundle.putBoolean("flagbook", false);
-   		
+    		//回传
+   		flagbook=false;
+    		BookPark.this.setResult(RESULT_OK, intent);
+    		BookPark.this.finish();
     	}
     	}).setNegativeButton("取消",
     	new DialogInterface.OnClickListener() {

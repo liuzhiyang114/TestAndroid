@@ -12,6 +12,7 @@ import com.baidu.mapapi.MapActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.CursorJoiner.Result;
 
 
 import android.os.Bundle;
@@ -74,7 +75,7 @@ public class Detail extends MapActivity implements OnClickListener{
 		Book=(Button)findViewById(R.id.btnbook);//预定
 		Book.setOnClickListener(this);
 		
-		//bundlebook();
+
 
 		//设置剩余车位数字粗体
 //		residue = (EditText)findViewById(R.id.residue) ;
@@ -131,14 +132,24 @@ public class Detail extends MapActivity implements OnClickListener{
 		case R.id.btnbook://车位预定
 			if(flagbook==true){
 				Intent intent=new Intent(Detail.this,BookPark.class);
-				startActivity(intent);
+				//参数传递
+				Bundle bundle=new Bundle();
+				bundle.putString("parkname", strname);
+				bundle.putBoolean("flag", flagbook);
+				
+				intent.putExtras(bundle);
+				
+				startActivityForResult(intent, 0);
 				overridePendingTransition(R.anim.in_right_left,R.anim.out_left_right); 
-				bundlebook();
+				
+				
+				
+				
 
-				if(flagbook==false){
-					booktext.setText("您已预定停车位，信息如下：\n"+strname+"	A区43号"+"\n如果想要取消预定请点击取消");
-			   		Book.setText("取消");
-				}
+//				if(flagbook==false){
+//					booktext.setText("您已预定停车位，信息如下：\n"+strname+"	A区43号"+"\n如果想要取消预定请点击取消");
+//			   		Book.setText("取消");
+//				}
 				
 			}
 			else{
@@ -178,13 +189,7 @@ public class Detail extends MapActivity implements OnClickListener{
 	
 	
 	
-	//Bundle
-	private void bundlebook(){
-		Bundle bundle=new Bundle();
-		bundle.clear();
-		flagbook=bundle.getBoolean("flagbook");
-		
-	}
+
 	
 	//加载图片
 	private void downimage(){
@@ -192,5 +197,18 @@ public class Detail extends MapActivity implements OnClickListener{
 		parkimage.setImageDrawable(null);
 	}
 	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		switch (resultCode) { //resultCode为回传的标记，我在B中回传的是RESULT_OK
+		case RESULT_OK:
+			Bundle bund=data.getExtras();  //data为B中回传的Intent
+			String str=bund.getString("str1");//str即为回传的值
+			flagbook=bund.getBoolean("flagbook");
+			booktext.setText("您已预定停车位，信息如下：\n"+strname+"	A区43号"+"\n如果想要取消预定请点击取消");
+	   		Book.setText("取消");
+                      break;
+		default:
+	           break;
+		}
+	}
 	
 }
