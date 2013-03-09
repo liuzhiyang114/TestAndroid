@@ -11,13 +11,16 @@
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>  
 	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission> 
 	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"/>
 	
 	<supports-screens android:largeScreens="true"
     android:normalScreens="true" android:smallScreens="true"
     android:resizeable="true" android:anyDensity="true"/>
 	
     <uses-sdk
-        android:minSdkVersion="3" />
+        android:minSdkVersion="7" />
 
     <application
         android:name=".ParkApp"
@@ -39,7 +42,7 @@
             </intent-filter>
 		</activity>
 		<activity android:name=".Detail"></activity>
-        
+        <activity android:name=".BookPark"></activity>
         
     </application>
     

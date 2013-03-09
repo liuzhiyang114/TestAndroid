@@ -20,7 +20,7 @@
     android:resizeable="true" android:anyDensity="true"/>
 	
     <uses-sdk
-        android:minSdkVersion="3" />
+        android:minSdkVersion="7" />
 
     <application
         android:name=".ParkApp"
@@ -42,7 +42,7 @@
             </intent-filter>
 		</activity>
 		<activity android:name=".Detail"></activity>
-        
+        <activity android:name=".BookPark"></activity>
         
     </application>
     

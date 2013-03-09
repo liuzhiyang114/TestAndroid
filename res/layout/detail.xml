@@ -1,5 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android" 
-    android:layout_width="fill_parent" android:layout_height="wrap_content">
+    android:layout_width="fill_parent" android:layout_height="wrap_content"
+    >
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -62,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:enabled="false"
-            android:text="万达停车场"
+            android:text=""
             android:textColor="#000000"
             android:textSize="23sp" />
     </LinearLayout>
@@ -87,7 +88,7 @@
             android:id="@+id/residue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="102"
+            android:text=""
             android:textStyle="bold" 
             android:textColor="#CC0000"
             android:textSize="23sp" />
@@ -113,7 +114,7 @@
             android:id="@+id/count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="500"
+            android:text=""
             android:textColor="#000000"
             android:textSize="23sp" />
     </LinearLayout>
@@ -133,7 +134,7 @@
         android:ems="500"
         android:enabled="false"
         android:gravity="top"
-        android:text="停车场位于天桥旁,环境良好,有专人看护,收费标准如下：1小时及以内4元，1到4小时,每小时3元,4小时及以上每小时2.5元"
+        android:text=""
         android:textColor="#000000"
         android:textSize="18sp" />
        <!-- android:inputType="textMultiLine"
@@ -147,13 +148,88 @@
             android:textSize="20sp"
             android:background="@drawable/orange"
             android:gravity="center_horizontal" />
-    <ImageButton 
-        android:id="@+id/btnpark"
+        
+        <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:orientation="horizontal" >
+        </LinearLayout>
+         
+        <!-- 下载图片 -->
+        
+            <Button android:id="@+id/parkimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:textSize="18sp"
+            android:background="@drawable/btndow"/>   
+              
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:orientation="horizontal" >
+        </LinearLayout>    
+        
+    <ImageView
+        android:id="@+id/imagepark"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:background="@drawable/park"
+		    android:layout_gravity="center"
+		    android:adjustViewBounds="false"
+
         />
-    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:orientation="horizontal" >
+        </LinearLayout>  
+    <!-- 预定 -->
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="停车预定"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:background="@drawable/orange"
+            android:gravity="center_horizontal" />
+        <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:orientation="horizontal" >
+        </LinearLayout>  
+        
+        <TextView  
+            android:id="@+id/booktext"
+          
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="您还未预定，点击预定停车位"
+            android:textColor="#000000"
+            android:textSize="20sp"/>
+  
+        
+        <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:orientation="horizontal" >
+        </LinearLayout>
+            
+            <Button android:id="@+id/btnbook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dip"
+            android:paddingRight="25dip"
+            android:textSize="18sp"
+            android:text="预定"
+            android:background="@drawable/btn"
+            android:layout_gravity="center"
+            />
+            
+
+        
+       
 
 </LinearLayout>
 </ScrollView>
