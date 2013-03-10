@@ -11,7 +11,7 @@ import android.widget.Toast;
 public class ParkApp extends Application{
 
 	static ParkApp mParkApp;
-	
+
 	//百度MapAPI的管理类
 	BMapManager mBMapMan = null;
 		
