@@ -29,9 +29,6 @@ public class BookPark extends MapActivity implements OnClickListener{
 		back=(Button)findViewById(R.id.btnback);
 		back.setOnClickListener(this);
 		//Bundle
-//		bundl=this.getIntent().getExtras();
-//		parkname=bundl.getString("parkname");
-		
 		intent=this.getIntent();
 		bundl=intent.getExtras();
 		flagbook=bundl.getBoolean("flag");
@@ -70,8 +67,8 @@ private void Bookpark(){
    			     Toast.LENGTH_SHORT).show();
     		//回传
    		flagbook=false;
-    		BookPark.this.setResult(RESULT_OK, intent);
-    		BookPark.this.finish();
+    	BookPark.this.setResult(RESULT_OK, intent);
+    	BookPark.this.finish();
     	}
     	}).setNegativeButton("取消",
     	new DialogInterface.OnClickListener() {

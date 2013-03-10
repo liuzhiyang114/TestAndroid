@@ -142,15 +142,6 @@ public class Detail extends MapActivity implements OnClickListener{
 				startActivityForResult(intent, 0);
 				overridePendingTransition(R.anim.in_right_left,R.anim.out_left_right); 
 				
-				
-				
-				
-
-//				if(flagbook==false){
-//					booktext.setText("您已预定停车位，信息如下：\n"+strname+"	A区43号"+"\n如果想要取消预定请点击取消");
-//			   		Book.setText("取消");
-//				}
-				
 			}
 			else{
 				DeleteBook();

@@ -99,7 +99,7 @@
             android:paddingRight="25dip"
             android:textSize="18sp"
             android:text="预定"
-            android:background="@drawable/btn"
+            android:background="@drawable/btnlist"
             android:layout_gravity="center"
             />
             
