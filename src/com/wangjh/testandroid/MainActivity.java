@@ -410,6 +410,6 @@ public class MainActivity extends MapActivity {
 	}
 }
 
-
+// 测试用
 
 
